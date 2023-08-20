@@ -1,6 +1,7 @@
 "use client";
 
 import UserStore from "@/Zustand/userStore";
+import Link from "next/link";
 
 export const LogoutBtn = () => {
   const User = UserStore((state: any) => state.User);
@@ -12,6 +13,6 @@ export const LogoutBtn = () => {
       Logout
     </button>
   ) : (
-    <button className="btn">Login</button>
+    <Link href={"/login"}>Login</Link>
   );
 };
