@@ -1,10 +1,10 @@
 import React from "react";
 
-const ServerComponents = () => {
+const ServerComponents = ({task:Tas}) => {
   return <div className="todo">
     <div>
-        <h4>{title}</h4>
-        <p>{description}</p>
+        <h4>{task.title}</h4>
+        <p>{task.description}</p>
     </div>
   </div>;
 };
