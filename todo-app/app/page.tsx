@@ -1,3 +1,7 @@
+import Form from "../components/addTodoForm";
 export default function Home() {
-  return <></>;
+  return <div className="container">
+    <Form />
+    <section className="todosContainer"></section>
+  </div>
 }
