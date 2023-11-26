@@ -18,7 +18,8 @@ export const POST = async (req: any) => {
     if(!ismatch){
         return errorHandler(400,"Invalid credentials");
     }
-    return new Response(JSON.stringify(user), {
+    const token=user.createjwt();
+    return new Response(JSON.stringify(token), {
         status: 200,
     });
 }
