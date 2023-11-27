@@ -3,7 +3,7 @@ import {create} from "zustand"
 
 type UserState = {
   User: User;
-  setLoading: (User: User) => void;
+  setUser: (User: User) => void;
 };
 const emptyUser: User = {
     _id: "",
@@ -13,7 +13,7 @@ const emptyUser: User = {
   };
 const UserStore = create<UserState>((set) => ({
   User:emptyUser,
-  setLoading: (user) => set({ User: user }),
+  setUser: (user) => set({ User: user }),
 }));
 
 export default UserStore;
