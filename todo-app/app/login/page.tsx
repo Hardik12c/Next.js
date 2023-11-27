@@ -3,6 +3,7 @@ import UserStore from "@/Zustand/userStore";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 const login = () => {
   const User = UserStore((state) => state.User);
@@ -22,13 +23,18 @@ const login = () => {
           password,
         }),
       });
-      if (!res.ok) {
-        throw new Error(await res.text());
-      }
+      console.log( res);
       const data = await res.json();
+      console.log(data);
+      if (!res.ok) {
+        return toast.error(data.message);
+      }
       setUser(data.user);
+      toast.success(data.message);
       localStorage.setItem("x-next-token", data.token);
-    } catch (error) {}
+    } catch (error) {
+      toast.error("Something went wrong");
+    }
   };
   if (User._id) redirect("/");
   return (

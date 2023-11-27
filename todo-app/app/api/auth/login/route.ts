@@ -12,14 +12,15 @@ export const POST = async (req: any) => {
   if (!user) {
     return errorHandler(400, "Invalid credentials");
   }
-  console.log(user);
-  console.log(password, user.password);
   const ismatch = await user.comparepasswords(password);
   if (!ismatch) {
     return errorHandler(400, "Invalid credentials");
   }
   const token = user.createjwt();
-  return new Response(JSON.stringify({ token: token, user }), {
-    status: 200,
-  });
+  return new Response(
+    JSON.stringify({ token: token, user, message: "logged in successfully" }),
+    {
+      status: 200,
+    }
+  );
 };
