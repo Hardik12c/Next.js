@@ -4,8 +4,8 @@ import { errorHandler } from "./error";
 
 export const checkAuth = async (req: any) => {
   const authorization = req.headers.get("x-next-token");
-  if (!authorization) {
-    return errorHandler(401, "Not authorized");
+  if (!authorization || authorization === "") {
+    return null;
   }
   const token = authorization;
   try {

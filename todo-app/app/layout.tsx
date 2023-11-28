@@ -1,6 +1,9 @@
+"use client";
 import { Toaster } from "react-hot-toast";
 import "../styles/app.scss";
 import Header from "./header";
+import UserStore from "@/Zustand/userStore";
+import { useEffect } from "react";
 
 export const metadata = {
   title: "Todo App",
@@ -11,6 +14,18 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const setUser = UserStore((state) => state.setUser);
+  useEffect(() => {
+    fetch("/api/auth/profile", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "x-next-token": localStorage.getItem("x-next-token") || "",
+      },
+    })
+      .then((res) => res.json())
+      .then((data: any) => setUser(data.user));
+  }, []);
   return (
     <html lang="en">
       <body>
