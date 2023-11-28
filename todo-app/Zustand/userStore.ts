@@ -14,6 +14,7 @@ const emptyUser: User = {
 const UserStore = create<UserState>((set) => ({
   User:emptyUser,
   setUser: (user) => set({ User: user }),
+  setEmptyUser: () => set({ User: emptyUser }),
 }));
 
 export default UserStore;
