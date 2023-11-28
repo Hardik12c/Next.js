@@ -13,7 +13,12 @@ export const POST = async (req: any) => {
     return errorHandler(400, "User already exists");
   }
   const newUser = await User.create({ name, email, password });
-  return new Response(JSON.stringify(newUser), {
-    status: 200,
-  });
+  const token = newUser.createjwt();
+
+  return new Response(
+    JSON.stringify({ token: token, user:newUser, message: "logged in successfully" }),
+    {
+      status: 200,
+    }
+  );
 };
