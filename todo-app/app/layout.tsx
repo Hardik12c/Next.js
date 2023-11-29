@@ -4,6 +4,7 @@ import "../styles/app.scss";
 import Header from "./header";
 import UserStore from "@/Zustand/userStore";
 import { useEffect } from "react";
+import { redirect } from "next/navigation";
 
 export const metadata = {
   title: "Todo App",
@@ -16,6 +17,9 @@ export default function RootLayout({
 }) {
   const setUser = UserStore((state) => state.setUser);
   useEffect(() => {
+    // if (!localStorage.getItem("x-next-token")) {
+    //   redirect("/login");
+    // } else {
     fetch("/api/auth/profile", {
       method: "GET",
       headers: {
@@ -25,6 +29,7 @@ export default function RootLayout({
     })
       .then((res) => res.json())
       .then((data: any) => setUser(data.user));
+    // }
   }, []);
   return (
     <html lang="en">

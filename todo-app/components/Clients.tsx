@@ -23,7 +23,7 @@ export const LogoutBtn = () => {
       toast.error(err.message);
     }
   };
-  return User._id ? (
+  return User?._id ? (
     <button className="btn" onClick={logoutHandler}>
       Logout
     </button>

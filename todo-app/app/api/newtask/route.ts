@@ -11,7 +11,10 @@ export const POST = async (req: any) => {
     return errorHandler(400, "Please provide title and description");
   }
   await Task.create({ title, description, user: user._id });
-  return new Response(JSON.stringify("task created successfully"), {
-    status: 200,
-  });
+  return new Response(
+    JSON.stringify({ message: "task created successfully" }),
+    {
+      status: 200,
+    }
+  );
 };
