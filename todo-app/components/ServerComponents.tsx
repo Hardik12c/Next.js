@@ -13,7 +13,7 @@ export const TodoItem: FC<Task> = (task): JSX.Element => {
         <ToDoButton
           title={""}
           description={""}
-          id={task.id}
+          _id={task._id}
           completed={false}
         />
       </div>

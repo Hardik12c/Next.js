@@ -40,7 +40,7 @@ export const ToDoButton: FC<Task> = (props): JSX.Element => {
   return (
     <>
       <input type="checkbox" checked={props.completed} />
-      <button className="btn" onClick={() => deleteHandler(props.id)}>
+      <button className="btn" onClick={() => deleteHandler(props._id)}>
         Delete
       </button>
     </>

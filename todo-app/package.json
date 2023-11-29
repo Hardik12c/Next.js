@@ -15,6 +15,7 @@
     "bcrypt": "^5.1.1",
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.19",
+    "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.4.3",
     "next": "13.4.19",

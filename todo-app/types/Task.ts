@@ -1,6 +1,6 @@
 export interface Task {
   title: string;
   description: string;
-  id: String;
+  _id: String;
   completed: boolean;
 }
