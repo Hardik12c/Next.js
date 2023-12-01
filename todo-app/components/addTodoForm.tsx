@@ -23,8 +23,10 @@ const addTodoForm = () => {
       });
       if (!response.ok) return toast.error("Something went wrong");
       const json = await response.json();
-      toast.success(json.message);
       router.refresh();
+      toast.success(json.message);
+      setTaskTitle("");
+      setTaskDescription("");
     } catch (err: any) {
       console.log(err);
       toast.error(err.message);
