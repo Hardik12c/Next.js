@@ -7,6 +7,7 @@ import Link from "next/link";
 import toast from "react-hot-toast";
 
 export const LogoutBtn = () => {
+  const router = useRouter();
   const User: User = UserStore((state: any) => state.User);
   const setEmptyUser: Function = UserStore((state: any) => state.setEmptyUser);
   const logoutHandler = async () => {
@@ -19,6 +20,7 @@ export const LogoutBtn = () => {
       localStorage.removeItem("x-next-token");
       setEmptyUser();
       toast.success(data.message);
+      router.push("/login");
     } catch (err: any) {
       toast.error(err.message);
     }
@@ -32,6 +34,7 @@ export const LogoutBtn = () => {
   );
 };
 import React, { FC, useEffect } from "react";
+import { redirect, useRouter } from "next/navigation";
 
 export const ToDoButton: FC<Task> = (props): JSX.Element => {
   const deleteHandler = (id: String) => {

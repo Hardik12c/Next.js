@@ -1,6 +1,7 @@
 import { errorHandler } from "@/middleware/error";
 import { User } from "@/models/user";
 import connectDB from "@/utils/features";
+import { NextResponse } from "next/server";
 
 export const POST = async (req: any) => {
   const { name, email, password } = await req.json();
@@ -15,10 +16,14 @@ export const POST = async (req: any) => {
   const newUser = await User.create({ name, email, password });
   const token = newUser.createjwt();
 
-  return new Response(
-    JSON.stringify({ token: token, user:newUser, message: "logged in successfully" }),
-    {
-      status: 200,
-    }
-  );
+  const response = NextResponse.json({
+    message: "Login successful",
+    success: true,
+    user: newUser,
+    token,
+  });
+  response.cookies.set("x-next-token", token, {
+    httpOnly: true,
+  });
+  return response;
 };

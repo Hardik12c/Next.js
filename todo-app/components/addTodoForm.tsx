@@ -1,10 +1,12 @@
 "use client";
+import { useRouter } from "next/navigation";
 import React from "react";
 import toast from "react-hot-toast";
 
 const addTodoForm = () => {
   const [taskTitle, setTaskTitle] = React.useState("");
   const [taskDescription, setTaskDescription] = React.useState("");
+  const router = useRouter();
   const submitForm = async (e: any) => {
     e.preventDefault();
     try {
@@ -21,7 +23,8 @@ const addTodoForm = () => {
       });
       if (!response.ok) return toast.error("Something went wrong");
       const json = await response.json();
-      return toast.success(json.message);
+      toast.success(json.message);
+      router.refresh();
     } catch (err: any) {
       console.log(err);
       toast.error(err.message);
