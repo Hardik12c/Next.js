@@ -7,7 +7,7 @@ type UserState = {
 };
 const emptyUser: User = {
     _id: "",
-    username: "",
+    name: "",
     email: "",
     password: "",
   };
