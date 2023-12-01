@@ -33,16 +33,50 @@ export const LogoutBtn = () => {
     <Link href={"/login"}>Login</Link>
   );
 };
-import React, { FC, useEffect } from "react";
-import { redirect, useRouter } from "next/navigation";
+import React, { FC } from "react";
+import { useRouter } from "next/navigation";
 
 export const ToDoButton: FC<Task> = (props): JSX.Element => {
-  const deleteHandler = (id: String) => {
-    alert("Delete");
+  const router = useRouter();
+  const deleteHandler = async (id: String) => {
+    try {
+      const data = await fetch(`/api/task/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "x-next-token": localStorage.getItem("x-next-token") || "",
+        },
+      });
+      if (!data.ok) {
+        return toast.error("Something went wrong");
+      }
+      router.refresh();
+      toast.success("Task Deleted");
+    } catch (error) {}
+  };
+  const updateHandler = async (id: String) => {
+    try {
+      const data = await fetch(`/api/task/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "x-next-token": localStorage.getItem("x-next-token") || "",
+        },
+      });
+      if (!data.ok) {
+        return toast.error("Something went wrong");
+      }
+      toast.success("Task updated successfully");
+      router.refresh();
+    } catch (error) {}
   };
   return (
     <>
-      <input type="checkbox" checked={props.completed} />
+      <input
+        type="checkbox"
+        checked={props.completed}
+        onChange={() => updateHandler(props._id)}
+      />
       <button className="btn" onClick={() => deleteHandler(props._id)}>
         Delete
       </button>

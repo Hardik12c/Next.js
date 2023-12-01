@@ -37,7 +37,7 @@ export default async function Home() {
             title={task.title}
             description={task.description}
             _id={task._id}
-            completed={task.completed}
+            completed={task.isCompleted}
           />
         ))}
       </section>
