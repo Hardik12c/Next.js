@@ -3,7 +3,7 @@ import { Toaster } from "react-hot-toast";
 import "../styles/app.scss";
 import UserStore from "@/Zustand/userStore";
 import { useEffect } from "react";
-import Header from "./header";
+import Header from "../components/header";
 
 export default function RootLayout({
   children,
