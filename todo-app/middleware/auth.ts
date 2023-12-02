@@ -1,5 +1,5 @@
 import { User } from "@/models/user";
-import jwt from "jsonwebtoken";
+import jwt, { Secret } from "jsonwebtoken";
 import { errorHandler } from "./error";
 
 export const checkAuth = async (req: any) => {
@@ -9,7 +9,7 @@ export const checkAuth = async (req: any) => {
   }
   const token = authorization;
   try {
-    const decoded: any = await jwt.verify(token, process.env.JWT_KEY);
+    const decoded: any = jwt.verify(token, process.env.JWT_KEY as Secret);
     const user = await User.findById(decoded.id);
     if (!user) {
       return errorHandler(401, "Not authorized");
