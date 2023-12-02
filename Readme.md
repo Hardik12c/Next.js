@@ -1,4 +1,4 @@
-<h1 align="center" id="title">Calculator App</h1>
+<h1 align="center" id="title">Todo-Next App</h1>
 
 <p align="center"><img src="https://socialify.git.ci/Hardik12c/Todo-Next/image?language=1&owner=1&name=1&stargazers=1&theme=Light" alt="Todo-Next" width="640" height="320" /></p>
 
