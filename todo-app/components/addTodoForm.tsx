@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import toast from "react-hot-toast";
 
-const addTodoForm = () => {
+const AddTodoForm = () => {
   const [taskTitle, setTaskTitle] = React.useState("");
   const [taskDescription, setTaskDescription] = React.useState("");
   const router = useRouter();
@@ -56,4 +56,4 @@ const addTodoForm = () => {
   );
 };
 
-export default addTodoForm;
+export default AddTodoForm;

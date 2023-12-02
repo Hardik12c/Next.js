@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
-const register = () => {
+const Register = () => {
   const User = UserStore((state) => state.User);
   const setUser = UserStore((state) => state.setUser);
   const [email, setemail] = useState("");
@@ -69,4 +69,4 @@ const register = () => {
   );
 };
 
-export default register;
+export default Register;

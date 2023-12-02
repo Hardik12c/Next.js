@@ -5,7 +5,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
-const login = () => {
+const Login = () => {
   const User = UserStore((state) => state.User);
   const setUser = UserStore((state) => state.setUser);
   const [email, setemail] = useState("");
@@ -62,4 +62,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;

@@ -1,5 +1,5 @@
 import { TodoItem } from "@/components/ServerComponents";
-import Form from "../components/addTodoForm";
+import AddTodoForm from "@/components/addTodoForm";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -30,7 +30,7 @@ export default async function Home() {
   console.log(tasks);
   return (
     <div className="container">
-      <Form />
+      <AddTodoForm />
       <section className="todosContainer">
         {tasks.map((task: any) => (
           <TodoItem
@@ -38,6 +38,7 @@ export default async function Home() {
             description={task.description}
             _id={task._id}
             completed={task.isCompleted}
+            key={task._id}
           />
         ))}
       </section>
