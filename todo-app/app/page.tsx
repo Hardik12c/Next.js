@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 
 const fetchTodo = async (token: string) => {
   try {
-    const res = await fetch("http://localhost:3000/api/mytasks", {
+    const res = await fetch(`${process.env.URL}/api/mytasks`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
